@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
+import { getFuriaResponse } from '../services/furiaApi';
+import { toast } from '../components/ui/sonner';
 
 interface Message {
   id: number;
@@ -20,6 +22,7 @@ const ChatDemo: React.FC = () => {
   
   const [input, setInput] = useState('');
   const [demoMode, setDemoMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Demo conversation flow
   const demoConversation = [
@@ -57,29 +60,39 @@ const ChatDemo: React.FC = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [demoMode]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (input.trim()) {
-      const newMessage: Message = {
+      const userMessage: Message = {
         id: messages.length + 1,
         text: input,
         sender: 'user',
         timestamp: new Date()
       };
       
-      setMessages([...messages, newMessage]);
+      setMessages(prev => [...prev, userMessage]);
       setInput('');
+      setIsLoading(true);
       
-      // Simulate bot response
-      setTimeout(() => {
-        const botResponse: Message = {
-          id: messages.length + 2,
-          text: "Isso é apenas uma demonstração. O Furia Chat Bot real responderia sua pergunta!",
-          sender: 'bot',
-          timestamp: new Date()
-        };
+      try {
+        // Get real response from our API service
+        const responseText = await getFuriaResponse(input);
         
-        setMessages(prev => [...prev, botResponse]);
-      }, 1000);
+        setTimeout(() => {
+          const botResponse: Message = {
+            id: messages.length + 2,
+            text: responseText,
+            sender: 'bot',
+            timestamp: new Date()
+          };
+          
+          setMessages(prev => [...prev, botResponse]);
+          setIsLoading(false);
+        }, 1000);
+      } catch (error) {
+        console.error("Error getting response:", error);
+        toast.error("Ops! Ocorreu um erro ao processar sua mensagem.");
+        setIsLoading(false);
+      }
     }
   };
 
@@ -108,7 +121,7 @@ const ChatDemo: React.FC = () => {
         </div>
       </div>
       
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4" id="chat-messages">
         {messages.map(message => (
           <div 
             key={message.id} 
@@ -132,6 +145,17 @@ const ChatDemo: React.FC = () => {
             </div>
           </div>
         ))}
+        {isLoading && (
+          <div className="flex justify-start">
+            <div className="bg-[#222] text-white border border-furia-green/30 rounded-lg px-4 py-2">
+              <div className="flex space-x-2">
+                <div className="w-2 h-2 bg-furia-green rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-furia-green rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-furia-green rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       
       <div className="p-4 border-t border-furia-green/30 bg-[#111]">
@@ -143,10 +167,12 @@ const ChatDemo: React.FC = () => {
             placeholder="Digite sua mensagem..."
             className="flex-1 bg-[#222] border border-furia-green/30 rounded-l px-4 py-2 focus:outline-none focus:border-furia-green"
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+            disabled={isLoading || demoMode}
           />
           <button 
             onClick={handleSend}
             className="bg-furia-green text-black px-4 py-2 rounded-r font-medium"
+            disabled={isLoading || demoMode}
           >
             Enviar
           </button>
