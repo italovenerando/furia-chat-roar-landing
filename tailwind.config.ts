@@ -25,10 +25,10 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				'furia-green': '#00FF88',
+				'furia-green': '#FFFFFF',
 				'furia-black': '#000000',
-				'furia-gradient-start': '#00FF88',
-				'furia-gradient-end': '#ADFF2F',
+				'furia-gradient-start': '#FFFFFF',
+				'furia-gradient-end': '#CCCCCC',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -74,24 +74,24 @@ export default {
 				},
 				'glow': {
 					'0%, 100%': { 
-						boxShadow: '0 0 5px #00FF88, 0 0 15px #00FF88',
+						boxShadow: '0 0 5px #FFFFFF, 0 0 15px #FFFFFF',
 					},
 					'50%': { 
-						boxShadow: '0 0 20px #00FF88, 0 0 30px #00FF88',
+						boxShadow: '0 0 20px #FFFFFF, 0 0 30px #FFFFFF',
 					},
 				},
 				'pulse-glow': {
 					'0%': {
 						opacity: '1',
-						boxShadow: '0 0 10px 2px #00FF88',
+						boxShadow: '0 0 10px 2px #FFFFFF',
 					},
 					'50%': {
 						opacity: '0.8',
-						boxShadow: '0 0 20px 4px #00FF88',
+						boxShadow: '0 0 20px 4px #FFFFFF',
 					},
 					'100%': {
 						opacity: '1',
-						boxShadow: '0 0 10px 2px #00FF88',
+						boxShadow: '0 0 10px 2px #FFFFFF',
 					},
 				},
 				'gradient-shift': {

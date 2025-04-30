@@ -14,24 +14,24 @@
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 142 100% 50%;
+    --primary: 0 0% 100%;
     --primary-foreground: 0 0% 0%;
 
-    --secondary: 84 100% 59%;
+    --secondary: 0 0% 80%;
     --secondary-foreground: 0 0% 0%;
 
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 142 100% 50%;
+    --accent: 0 0% 100%;
     --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 0% 90%;
+    --destructive-foreground: 0 0% 0%;
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 142 100% 50%;
+    --ring: 0 0% 100%;
 
     --radius: 0.25rem;
   }
@@ -48,7 +48,7 @@
   }
 
   .furia-glow {
-    @apply shadow-[0_0_15px_2px_#00FF88];
+    @apply shadow-[0_0_15px_2px_#FFFFFF];
   }
 
   .furia-gradient {
@@ -64,15 +64,15 @@
   }
 
   .furia-card {
-    @apply bg-[#111] border border-furia-green rounded-lg p-6 transition-all duration-300 hover:shadow-[0_0_15px_2px_#00FF88];
+    @apply bg-[#111] border border-furia-green rounded-lg p-6 transition-all duration-300 hover:shadow-[0_0_15px_2px_#FFFFFF];
   }
 
   .furia-btn {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-furia-green text-furia-black font-bold rounded transition-all duration-300 hover:shadow-[0_0_15px_2px_#00FF88] hover:scale-105 transform active:scale-95;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-furia-green text-furia-black font-bold rounded transition-all duration-300 hover:shadow-[0_0_15px_2px_#FFFFFF] hover:scale-105 transform active:scale-95;
   }
 
   .furia-btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-furia-green text-furia-green font-bold rounded transition-all duration-300 hover:bg-furia-green hover:text-furia-black hover:shadow-[0_0_15px_2px_#00FF88];
+    @apply inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-furia-green text-furia-green font-bold rounded transition-all duration-300 hover:bg-furia-green hover:text-furia-black hover:shadow-[0_0_15px_2px_#FFFFFF];
   }
 
   .section-title {
