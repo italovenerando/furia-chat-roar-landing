@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,10 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'furia-green': '#00FF88',
+				'furia-black': '#000000',
+				'furia-gradient-start': '#00FF88',
+				'furia-gradient-end': '#ADFF2F',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -52,16 +57,6 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -70,25 +65,56 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 5px #00FF88, 0 0 15px #00FF88',
 					},
-					to: {
-						height: '0'
+					'50%': { 
+						boxShadow: '0 0 20px #00FF88, 0 0 30px #00FF88',
+					},
+				},
+				'pulse-glow': {
+					'0%': {
+						opacity: '1',
+						boxShadow: '0 0 10px 2px #00FF88',
+					},
+					'50%': {
+						opacity: '0.8',
+						boxShadow: '0 0 20px 4px #00FF88',
+					},
+					'100%': {
+						opacity: '1',
+						boxShadow: '0 0 10px 2px #00FF88',
+					},
+				},
+				'gradient-shift': {
+					'0%, 100%': {
+						backgroundPosition: '0% 50%'
+					},
+					'50%': {
+						backgroundPosition: '100% 50%'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'glow': 'glow 2s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s infinite',
+				'gradient-shift': 'gradient-shift 3s ease infinite',
+			},
+			fontFamily: {
+				orbitron: ['Orbitron', 'sans-serif'],
+			},
+			backgroundImage: {
+				'hero-pattern': "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/hero-bg.jpg')",
 			}
 		}
 	},
