@@ -29,9 +29,6 @@ Este projeto foi criado como parte de um desafio proposto pela FURIA, com o intu
 - **Integrações**:
   - [BetsAPI](https://betsapi.com/t/251055/FURIA) para dados de partidas e estatísticas em tempo real.
   - [Liquipedia](https://liquipedia.net/counterstrike/FURIA) para informações detalhadas sobre a equipe e jogadores.
-- **Hospedagem**: Netlify
-- **Design**: Figma
-
 ---
 
 ## 🚀 Como Utilizar
